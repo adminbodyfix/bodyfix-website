@@ -28,6 +28,7 @@
             --card-shadow: 0 20px 35px -12px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.02);
             --hover-shadow: 0 30px 40px -18px rgba(79,124,255,0.3);
             --gradient: linear-gradient(145deg, #0A2C6F, #1F46C7, #4F7CFF);
+            --success: #1F8B6C;
         }
 
         [data-theme="dark"] {
@@ -43,6 +44,7 @@
             --card-shadow: 0 25px 40px -12px rgba(0,255,200,0.15);
             --hover-shadow: 0 30px 45px -12px #00E6B3;
             --gradient: linear-gradient(135deg, #00E6B3, #2AD4B6);
+            --success: #00D8A0;
         }
 
         body {
@@ -143,6 +145,16 @@
         .contact-email:hover { transform: scale(1.02); background: var(--primary); color: white; }
         input, textarea { transition: all 0.2s; }
         input:focus, textarea:focus { transform: scale(1.01); border-color: var(--primary); box-shadow: 0 0 0 3px rgba(79,124,255,0.2); outline: none; }
+
+        /* إضافات صفحة الباقات */
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin: 40px 0; }
+        .pricing-card { background: var(--surface); border-radius: 32px; padding: 24px; text-align: center; transition: 0.3s; border: 1px solid var(--border); }
+        .pricing-card:hover { transform: translateY(-8px); box-shadow: var(--hover-shadow); }
+        .pricing-card h3 { font-size: 1.8rem; margin-bottom: 10px; }
+        .price { font-size: 2rem; font-weight: 900; color: var(--primary); margin: 15px 0; }
+        .price small { font-size: 1rem; font-weight: normal; }
+        .save-badge { background: var(--success); color: white; border-radius: 60px; padding: 5px 12px; font-size: 0.8rem; display: inline-block; margin-bottom: 15px; }
+
         @media (max-width: 700px) { .top-bar { padding: 12px 16px; } .page { padding: 20px 16px; } }
         [data-aos] { transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94); }
     </style>
@@ -161,6 +173,7 @@
         <div class="drawer-header"><span>BodyFix</span><div class="drawer-close" id="closeDrawer"><i class="fas fa-times"></i></div></div>
         <a href="#" data-page="home"><i class="fas fa-home"></i> الرئيسية</a>
         <a href="#" data-page="features"><i class="fas fa-star"></i> المميزات</a>
+        <a href="#" data-page="pricing"><i class="fas fa-tags"></i> الباقات والاشتراكات</a>
         <a href="#" data-page="howitworks"><i class="fas fa-cogs"></i> كيف يعمل التطبيق؟</a>
         <a href="#" data-page="faq"><i class="fas fa-question-circle"></i> الأسئلة الشائعة</a>
         <a href="#" data-page="contact"><i class="fas fa-envelope"></i> تواصل معنا</a>
@@ -208,6 +221,48 @@
         <div class="glass-card" data-aos="zoom-in-up" data-aos-delay="100"><h3><i class="fas fa-language"></i> دعم كامل للغة العربية</h3><p>الواجهة بالعربية الفصحى مع دعم كامل للنصوص والتوجيه.</p></div>
     </div>
 
+    <!-- صفحة الباقات والاشتراكات (بدون سياسة الاسترجاع) -->
+    <div id="page-pricing" class="page">
+        <h2 style="font-size: 2.5rem;" data-aos="fade-right">💰 باقات واشتراكات BodyFix</h2>
+        <p style="margin-bottom: 20px;">اختر الباقة التي تناسب احتياجاتك. جميع الباقات تشمل الخطة الذكية الكاملة.</p>
+        <div class="pricing-grid">
+            <div class="pricing-card" data-aos="zoom-in">
+                <h3>🎁 تجربة مجانية</h3>
+                <div class="price">0 جنيه <small>/ 3 أيام</small></div>
+                <div class="save-badge">بدون التزام</div>
+                <p>جرب كل الميزات لمدة 3 أيام مجاناً. يمكنك الإلغاء في أي وقت.</p>
+                <button class="btn-glow try-now" style="margin-top: 20px;">جرب الآن</button>
+            </div>
+            <div class="pricing-card" data-aos="zoom-in" data-aos-delay="100">
+                <h3>📅 Core</h3>
+                <div class="price">150 جنيه <small>/ شهر</small></div>
+                <p>خطة شهرية مرنة. <br> <span style="color: var(--primary);">0% توفير</span></p>
+                <button class="btn-glow subscribe-btn" data-plan="Core">اشترك شهرياً</button>
+            </div>
+            <div class="pricing-card" data-aos="zoom-in" data-aos-delay="200">
+                <h3>⭐ Pro</h3>
+                <div class="price">400 جنيه <small>/ 3 أشهر</small></div>
+                <div class="save-badge">وفر 11%</div>
+                <p>≈ 133 جنيه شهرياً <br> توفير 50 جنيهاً مقارنة بالشهرية.</p>
+                <button class="btn-glow subscribe-btn" data-plan="Pro">اشتر ربع سنوي</button>
+            </div>
+            <div class="pricing-card" data-aos="zoom-in" data-aos-delay="300">
+                <h3>💎 Elate</h3>
+                <div class="price">750 جنيه <small>/ 6 أشهر</small></div>
+                <div class="save-badge">وفر 17%</div>
+                <p>≈ 125 جنيه شهرياً <br> توفير 150 جنيهاً.</p>
+                <button class="btn-glow subscribe-btn" data-plan="Elate">اشتر نصف سنوي</button>
+            </div>
+            <div class="pricing-card" data-aos="zoom-in" data-aos-delay="400">
+                <h3>🏆 Ultimate</h3>
+                <div class="price">1500 جنيه <small>/ سنة</small></div>
+                <div class="save-badge">وفر 25%</div>
+                <p>≈ 125 جنيه شهرياً (أفضل قيمة) <br> توفير 300 جنيه.</p>
+                <button class="btn-glow subscribe-btn" data-plan="Ultimate">اشتر سنوياً</button>
+            </div>
+        </div>
+    </div>
+
     <!-- صفحة كيف يعمل التطبيق -->
     <div id="page-howitworks" class="page">
         <h2 style="font-size: 2.5rem;" data-aos="fade-left">📱 كيف يعمل BodyFix في 4 خطوات</h2>
@@ -230,7 +285,7 @@
         <div class="glass-card" data-aos="fade-right" data-aos-delay="150"><h3>هل يمكنني تغيير هدفي؟</h3><p>نعم، في أي وقت من الإعدادات، وسيعيد التطبيق حساب خطتك.</p></div>
     </div>
 
-    <!-- صفحة تواصل معنا (بريد إلكتروني فقط + زر إرسال شغال) -->
+    <!-- صفحة تواصل معنا -->
     <div id="page-contact" class="page">
         <h2 style="font-size: 2.5rem;" data-aos="fade-up">📬 تواصل معنا</h2>
         <div class="glass-card" style="text-align: center;" data-aos="zoom-in">
@@ -294,7 +349,7 @@
             closeDrawerBtn.addEventListener('click', closeDrawerFunc);
             overlay.addEventListener('click', closeDrawerFunc);
 
-            const pages = ['home', 'features', 'howitworks', 'faq', 'contact'];
+            const pages = ['home', 'features', 'pricing', 'howitworks', 'faq', 'contact'];
             function showPage(pageId) {
                 pages.forEach(p => document.getElementById(`page-${p}`).classList.remove('active-page'));
                 document.getElementById(`page-${pageId}`).classList.add('active-page');
@@ -322,14 +377,13 @@
                 });
             }
 
-            // رسالة "قريباً" فقط للأزرار التي لم نجهزها (تحميل التطبيق ووسائل التواصل غير المضافة)
             function showComingSoon(msg = "سيتم الإضافة قريباً") {
                 toast.textContent = msg;
                 toast.style.opacity = '1';
                 setTimeout(() => toast.style.opacity = '0', 2000);
             }
 
-            // زر إرسال البريد: شغال حقيقي وبيبعت إيميل بدون أي رسالة "قريباً"
+            // زر إرسال البريد من صفحة التواصل
             const sendMsgBtn = document.getElementById('sendMsgBtn');
             if(sendMsgBtn) {
                 sendMsgBtn.addEventListener('click', (e) => {
@@ -343,7 +397,12 @@
                 });
             }
 
-            // الأزرار غير النشطة (تحميل التطبيق، وسائل التواصل غير المضافة) تظهر رسالة "قريباً"
+            // أزرار صفحة الباقات (تجربة مجانية واشتراكات)
+            document.querySelectorAll('.try-now, .subscribe-btn').forEach(btn => {
+                btn.addEventListener('click', () => { showComingSoon("نظام الدفع قيد التطوير. سيتم إشعارك قريباً."); });
+            });
+
+            // أزرار التحميل ووسائل التواصل غير النشطة
             document.querySelectorAll('.store-btn, .disabled-social').forEach(el => {
                 el.addEventListener('click', (e) => {
                     e.preventDefault();
