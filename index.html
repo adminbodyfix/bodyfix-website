@@ -294,6 +294,14 @@
         </div>
 
         <div class="pricing-grid">
+            <div class="pricing-card" data-aos="zoom-in" data-aos-delay="50">
+                <h3>🧪 Test</h3>
+                <p style="font-weight: 600; color: var(--primary); margin-bottom: 5px;">باقة اختبار الدفع</p>
+                <div class="price">10 جنيه <small>/ اختبار</small></div>
+                <p>مخصصة لتجربة الفلو كامل من التحقق وحتى الوصول إلى كاشير.</p>
+                <button class="btn-glow subscribe-btn" data-plan="Test">اشترك الآن</button>
+            </div>
+
             <div class="pricing-card" data-aos="zoom-in" data-aos-delay="100">
                 <h3>💪 Core</h3>
                 <p style="font-weight: 600; color: var(--primary); margin-bottom: 5px;">الخطة الأساسية</p>
@@ -398,6 +406,7 @@
                     templateId: 'template_yvwtl3f',
                 },
                 kashierLinks: {
+                    test: 'https://checkouts.kashier.io/ar/paymentLinkPage?ppLink=PL-4486692306,live',
                     core: 'https://checkouts.kashier.io/ar/paymentLinkPage?ppLink=PL-4486692301,live',
                     pro: 'https://checkouts.kashier.io/ar/paymentLinkPage?ppLink=PL-4486692302,live',
                     elite: 'https://checkouts.kashier.io/ar/paymentLinkPage?ppLink=PL-4486692303,live',
@@ -406,6 +415,7 @@
             });
 
             const PLAN_MAP = Object.freeze({
+                Test: { id: 'test', name: 'Test', priceLabel: '10 جنيه / تجربة دفع' },
                 Core: { id: 'core', name: 'Core', priceLabel: '150 جنيه / شهر' },
                 Pro: { id: 'pro', name: 'Pro', priceLabel: '400 جنيه / 3 أشهر' },
                 Elate: { id: 'elite', name: 'Elate', priceLabel: '750 جنيه / 6 أشهر' },
