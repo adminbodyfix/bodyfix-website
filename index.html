@@ -68,7 +68,6 @@
             pointer-events: none;
             transition: 0.5s;
         }
-
         [data-theme="dark"] .animated-bg {
             background: radial-gradient(circle at 10% 20%, rgba(0,230,179,0.08) 0%, transparent 60%);
         }
@@ -86,7 +85,6 @@
             align-items: center;
             flex-wrap: wrap;
         }
-
         .logo { display: flex; align-items: center; gap: 12px; }
         .logo img { width: 44px; height: 44px; border-radius: 16px; background: var(--logo-bg); padding: 4px; }
         .logo span { font-size: 1.8rem; font-weight: 900; background: var(--gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
@@ -113,7 +111,6 @@
             gap: 25px;
             border-left: 1px solid var(--border);
         }
-
         .drawer.open { right: 0; }
         .drawer-header { display: flex; justify-content: space-between; align-items: center; font-size: 1.5rem; font-weight: bold; border-bottom: 2px solid var(--primary); padding-bottom: 12px; }
         .drawer-close { cursor: pointer; font-size: 1.8rem; transition: 0.2s; }
@@ -127,11 +124,7 @@
 
         .page { display: none; padding: 40px 24px; max-width: 1200px; margin: 0 auto; animation: fadeUp 0.8s ease; }
         .page.active-page { display: block; }
-
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
         .glass-card { background: var(--surface-soft); backdrop-filter: blur(12px); border: 1px solid var(--border); border-radius: 48px; padding: 32px; margin: 30px 0; box-shadow: var(--card-shadow); transition: all 0.3s; }
         .glass-card:hover { transform: translateY(-8px) scale(1.01); box-shadow: var(--hover-shadow); }
@@ -161,48 +154,18 @@
         .pricing-card h3 { font-size: 2rem; margin-bottom: 10px; }
         .price { font-size: 2.2rem; font-weight: 900; color: var(--primary); margin: 20px 0; }
         .price small { font-size: 1rem; font-weight: normal; }
-        .save-badge {
-            background: var(--success);
-            color: white;
-            border-radius: 60px;
-            padding: 8px 20px;
-            font-size: 1rem;
-            display: inline-block;
-            margin: 5px 0 15px;
-            font-weight: 700;
-            box-shadow: 0 5px 15px rgba(31,139,108,0.3);
-            letter-spacing: 0.5px;
-            animation: pulse-badge 2s infinite;
-        }
-
-        @keyframes pulse-badge {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
+        .save-badge { background: var(--success); color: white; border-radius: 60px; padding: 8px 20px; font-size: 1rem; display: inline-block; margin: 5px 0 15px; font-weight: 700; box-shadow: 0 5px 15px rgba(31,139,108,0.3); letter-spacing: 0.5px; animation: pulse-badge 2s infinite; }
+        @keyframes pulse-badge { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
         .pricing-card p { margin: 12px 0; line-height: 1.6; }
         .pricing-card .btn-glow { width: 100%; justify-content: center; margin-top: 15px; font-size: 1.1rem; }
         .trial-notice { background: var(--surface); border: 2px dashed var(--primary); border-radius: 24px; padding: 20px; text-align: center; font-weight: 500; }
-        .all-features {
-            background: var(--surface);
-            border-radius: 32px;
-            padding: 28px;
-            margin: 30px 0;
-            border: 1px solid var(--border);
-            text-align: right;
-        }
-
+        .all-features { background: var(--surface); border-radius: 32px; padding: 28px; margin: 30px 0; border: 1px solid var(--border); text-align: right; }
         .all-features h3 { text-align: center; margin-bottom: 20px; }
         .all-features ul { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; }
         .all-features li { padding: 8px 0; display: flex; align-items: center; gap: 8px; font-size: 1rem; }
         .all-features li i { color: var(--primary); width: 20px; }
 
-        @media (max-width: 700px) {
-            .top-bar { padding: 12px 16px; }
-            .page { padding: 20px 16px; }
-        }
-
+        @media (max-width: 700px) { .top-bar { padding: 12px 16px; } .page { padding: 20px 16px; } }
         [data-aos] { transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94); }
     </style>
 </head>
@@ -294,7 +257,7 @@
         </div>
 
         <div class="pricing-grid">
-            <div class="pricing-card" data-aos="zoom-in" data-aos-delay="50">
+            <div class="pricing-card" data-plan-card="test" data-aos="zoom-in" data-aos-delay="50">
                 <h3>🧪 Test</h3>
                 <p style="font-weight: 600; color: var(--primary); margin-bottom: 5px;">باقة اختبار الدفع</p>
                 <div class="price">10 جنيه <small>/ اختبار</small></div>
@@ -391,6 +354,7 @@
                 googlePlayUrl: '',
                 appleStoreUrl: '',
                 adminEmail: 'admin.BodyFix@gmail.com',
+                showTestPlan: true,
                 firebase: {
                     apiKey: 'AIzaSyBJ4nO_67x_o7pvTCdJr5CYOqF0ozC1_CU',
                     authDomain: 'bodyfix-66f39.firebaseapp.com',
@@ -446,19 +410,25 @@
             const toast = document.getElementById('toastMsg');
 
             function initializeIntegrations() {
-                if (typeof firebase !== 'undefined' && !firebase.apps.length) {
-                    firebase.initializeApp(SITE_CONFIG.firebase);
+                try {
+                    if (window.firebase && !firebase.apps.length) {
+                        firebase.initializeApp(SITE_CONFIG.firebase);
+                    }
+                    if (window.firebase) {
+                        db = firebase.firestore();
+                    }
+                } catch (error) {
+                    console.error('Firebase init error', error);
                 }
-                if (typeof firebase !== 'undefined') {
-                    db = firebase.firestore();
-                }
-                if (
-                    window.emailjs &&
-                    SITE_CONFIG.emailjs.publicKey.trim() &&
-                    SITE_CONFIG.emailjs.serviceId.trim() &&
-                    SITE_CONFIG.emailjs.templateId.trim()
-                ) {
-                    window.emailjs.init({ publicKey: SITE_CONFIG.emailjs.publicKey.trim() });
+
+                try {
+                    if (window.emailjs && SITE_CONFIG.emailjs.publicKey.trim()) {
+                        window.emailjs.init({
+                            publicKey: SITE_CONFIG.emailjs.publicKey.trim(),
+                        });
+                    }
+                } catch (error) {
+                    console.error('EmailJS init error', error);
                 }
             }
 
@@ -466,7 +436,6 @@
                 return Boolean(
                     window.emailjs &&
                     SITE_CONFIG.emailjs.publicKey.trim() &&
-                    SITE_CONFIG.emailjs.serviceId.trim() &&
                     SITE_CONFIG.emailjs.templateId.trim()
                 );
             }
@@ -522,14 +491,15 @@
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
                     const page = link.getAttribute('data-page');
-                    if (pages.includes(page)) showPage(page);
+                    if (pages.includes(page)) {
+                        showPage(page);
+                    }
                 });
             });
 
             function startCounters() {
-                const counters = document.querySelectorAll('.counter');
-                counters.forEach((counter) => {
-                    const target = parseInt(counter.getAttribute('data-target'), 10);
+                document.querySelectorAll('.counter').forEach((counter) => {
+                    const target = parseInt(counter.getAttribute('data-target') || '0', 10);
                     let current = 0;
                     const increment = target / 50;
                     const update = () => {
@@ -545,7 +515,7 @@
                 });
             }
 
-            function showComingSoon(msg = 'سيتم الإضافة قريباً') {
+            function showComingSoon(msg = 'سيتم الإضافة قريبًا') {
                 toast.textContent = msg;
                 toast.style.opacity = '1';
                 setTimeout(() => {
@@ -597,10 +567,10 @@
             }
 
             function storeIdentity(name, email) {
-                localStorage.setItem(
-                    STORAGE_KEYS.customerIdentity,
-                    JSON.stringify({ name: name.trim(), email: email.trim() })
-                );
+                localStorage.setItem(STORAGE_KEYS.customerIdentity, JSON.stringify({
+                    name: String(name || '').trim(),
+                    email: String(email || '').trim(),
+                }));
             }
 
             function generateVerificationCode() {
@@ -617,7 +587,7 @@
 
             function buildVerificationPayload(name, email, planId, code) {
                 return {
-                    name: name.trim(),
+                    name: String(name || '').trim(),
                     email: normalizeEmail(email),
                     planId,
                     code,
@@ -642,13 +612,7 @@
             }
 
             function verificationStillValid(payload) {
-                return Boolean(
-                    payload &&
-                    payload.code &&
-                    payload.email &&
-                    payload.sentAt &&
-                    (Date.now() - Number(payload.sentAt)) <= 10 * 60 * 1000
-                );
+                return Boolean(payload && payload.code && payload.email && payload.sentAt && (Date.now() - Number(payload.sentAt)) <= 10 * 60 * 1000);
             }
 
             function readEmailJsError(error) {
@@ -680,7 +644,6 @@
                 ].filter((value, index, array) => value && array.indexOf(value) === index);
 
                 let lastError = null;
-
                 for (const serviceId of candidateServiceIds) {
                     try {
                         return await window.emailjs.send(
@@ -692,7 +655,6 @@
                         lastError = error;
                     }
                 }
-
                 throw new Error(readEmailJsError(lastError));
             }
 
@@ -726,7 +688,12 @@
                 return requestRef.id;
             }
 
-            async function markPaymentSubmitted(requestId) {
+            function clearPendingOrder() {
+                sessionStorage.removeItem(STORAGE_KEYS.pendingOrderId);
+                sessionStorage.removeItem(STORAGE_KEYS.pendingPlanId);
+            }
+
+            async function markPaymentSubmitted(requestId, paymentReference) {
                 if (!db || !requestId) {
                     throw new Error('تعذر العثور على الطلب الجاري.');
                 }
@@ -734,6 +701,7 @@
                 await db.collection('website_checkout_requests').doc(requestId).update({
                     status: 'payment_submitted',
                     customerConfirmedPayment: true,
+                    paymentReference: String(paymentReference || '').trim(),
                     paymentSubmittedAt: firebase.firestore.FieldValue.serverTimestamp(),
                     customerSeenSuccessAt: firebase.firestore.FieldValue.serverTimestamp(),
                     updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
@@ -765,6 +733,11 @@
                             سيتم إرسال كود التفعيل والطريقة على البريد:
                             <span style="direction:ltr; display:inline-block;">${email}</span>
                         </p>
+                        <div style="background:var(--surface); border:1px solid var(--border); border-radius:24px; padding:16px; margin-bottom:16px; color:var(--text-secondary); line-height:1.7;">
+                            <div style="font-weight:800; color:var(--text); margin-bottom:6px;">سيتم إرسال الكود خلال ساعة في مواعيد العمل.</div>
+                            <div>إذا لم يصلك الإيميل، افحص Spam/Junk أو تواصل معنا على:</div>
+                            <div style="direction:ltr; display:inline-block; margin-top:6px; font-weight:700; color:var(--text);">${SITE_CONFIG.adminEmail}</div>
+                        </div>
                         <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
                             <button class="btn-glow" id="successCloseBtn">حسنًا</button>
                         </div>
@@ -791,19 +764,32 @@
                             <div style="color:var(--text-secondary);">${plan.priceLabel}</div>
                             <div style="margin-top:10px; color:var(--text-secondary); direction:ltr;">${identity.email}</div>
                         </div>
+                        <div style="background:var(--surface); border:1px solid var(--border); border-radius:24px; padding:16px; margin-bottom:18px; text-align:right; color:var(--text-secondary); line-height:1.7;">
+                            <div style="font-weight:800; color:var(--text); margin-bottom:8px;">تذكير سريع</div>
+                            <div>تأكد من استخدام نفس البريد لاستلام كود التفعيل.</div>
+                            <div>بعد إتمام الدفع انسخ رقم العملية من كاشير وضعه هنا لتسريع المراجعة.</div>
+                            <div>ثم ارجع لهذه النافذة واضغط على "لقد أتممت الدفع".</div>
+                        </div>
+                        <input id="paymentReferenceInput" type="text" placeholder="رقم العملية / المرجع من كاشير" style="width:100%; padding:12px; border-radius:60px; border:1px solid var(--border); background:var(--surface); direction:ltr; margin-bottom:12px;">
+                        <div id="paymentReferenceStatus" style="margin-bottom:18px; color:var(--text-secondary); font-size:0.95rem;">
+                            اكتب رقم العملية بعد الدفع حتى يصل طلبك للأدمن بشكل أوضح.
+                        </div>
                         <div style="display:flex; justify-content:center; gap:12px; flex-wrap:wrap;">
                             <button class="btn-glow" id="reopenCheckoutBtn">فتح كاشير مرة أخرى</button>
                             <button class="btn-glow" id="confirmPaidBtn">لقد أتممت الدفع</button>
                         </div>
-                        <button
-                            id="cancelPurchaseFlowBtn"
-                            style="margin-top:16px; background:transparent; border:none; color:var(--text-secondary); cursor:pointer; font:inherit;"
-                        >
-                            إغلاق
-                        </button>
+                        <button id="cancelPurchaseFlowBtn" style="margin-top:16px; background:transparent; border:none; color:var(--text-secondary); cursor:pointer; font:inherit;">إغلاق</button>
                     </div>
                     `
                 );
+
+                const paymentReferenceInput = card.querySelector('#paymentReferenceInput');
+                const paymentReferenceStatus = card.querySelector('#paymentReferenceStatus');
+
+                function setPaymentReferenceStatus(message, isError) {
+                    paymentReferenceStatus.textContent = message;
+                    paymentReferenceStatus.style.color = isError ? '#ffb4b4' : 'var(--text-secondary)';
+                }
 
                 card.querySelector('#reopenCheckoutBtn').addEventListener('click', () => {
                     try {
@@ -817,10 +803,19 @@
 
                 card.querySelector('#confirmPaidBtn').addEventListener('click', async (event) => {
                     const button = event.currentTarget;
+                    const paymentReference = String(paymentReferenceInput.value || '').trim();
+
+                    if (paymentReference.length < 4) {
+                        setPaymentReferenceStatus('اكتب رقم العملية كما ظهر لك في كاشير لتسريع المراجعة.', true);
+                        paymentReferenceInput.focus();
+                        return;
+                    }
+
                     button.disabled = true;
                     button.textContent = 'جارٍ تسجيل الطلب...';
                     try {
-                        await markPaymentSubmitted(requestId);
+                        await markPaymentSubmitted(requestId, paymentReference);
+                        clearPendingOrder();
                         closePurchaseOverlay();
                         showPage('pricing');
                         showManualSuccessMessage(identity.email);
@@ -846,41 +841,24 @@
                     <div>
                         <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:16px;">
                             <h2 style="font-size:1.8rem;">${plan.name}</h2>
-                            <button
-                                id="closePurchaseFlowBtn"
-                                style="background:transparent; border:none; color:var(--text-secondary); font-size:1.4rem; cursor:pointer;"
-                                aria-label="close"
-                            >
-                                ×
-                            </button>
+                            <button id="closePurchaseFlowBtn" style="background:transparent; border:none; color:var(--text-secondary); font-size:1.4rem; cursor:pointer;" aria-label="close">×</button>
                         </div>
                         <p style="margin-bottom:14px; color:var(--text-secondary);">
                             أدخل اسمك وبريدك الإلكتروني، وسنرسل لك كود تحقق قبل تحويلك إلى كاشير.
                         </p>
+                        <div style="background:var(--surface); border:1px solid var(--border); border-radius:24px; padding:14px 16px; margin-bottom:14px; color:var(--text-secondary); line-height:1.7;">
+                            <div style="font-weight:800; color:var(--text); margin-bottom:6px;">ملاحظات مهمة</div>
+                            <div>تأكد من كتابة نفس الإيميل الذي تريد استلام كود التفعيل عليه.</div>
+                            <div>إذا لم يصلك كود التحقق، افحص Spam/Junk أو أعد الإرسال بعد دقيقة.</div>
+                            <div>بعد الدفع ارجع لنفس النافذة لتأكيد العملية.</div>
+                        </div>
                         <div style="display:grid; gap:12px;">
-                            <input
-                                id="purchaseNameInput"
-                                type="text"
-                                value="${String(storedIdentity.name || '').replace(/"/g, '&quot;')}"
-                                placeholder="الاسم"
-                                style="width:100%; padding:12px; border-radius:60px; border:1px solid var(--border); background:var(--surface);"
-                            >
-                            <input
-                                id="purchaseEmailInput"
-                                type="email"
-                                value="${String(storedIdentity.email || '').replace(/"/g, '&quot;')}"
-                                placeholder="البريد الإلكتروني"
-                                style="width:100%; padding:12px; border-radius:60px; border:1px solid var(--border); background:var(--surface); direction:ltr;"
-                            >
+                            <input id="purchaseNameInput" type="text" value="${String(storedIdentity.name || '').replace(/"/g, '&quot;')}" placeholder="الاسم" style="width:100%; padding:12px; border-radius:60px; border:1px solid var(--border); background:var(--surface);">
+                            <input id="purchaseEmailInput" type="email" value="${String(storedIdentity.email || '').replace(/"/g, '&quot;')}" placeholder="البريد الإلكتروني" style="width:100%; padding:12px; border-radius:60px; border:1px solid var(--border); background:var(--surface); direction:ltr;">
                             <div style="display:flex; gap:10px; flex-wrap:wrap;">
                                 <button class="btn-glow" id="sendVerificationBtn">إرسال كود التحقق</button>
                             </div>
-                            <input
-                                id="verificationCodeInput"
-                                type="text"
-                                placeholder="أدخل كود التحقق"
-                                style="width:100%; padding:12px; border-radius:60px; border:1px solid var(--border); background:var(--surface); direction:ltr;"
-                            >
+                            <input id="verificationCodeInput" type="text" placeholder="أدخل كود التحقق" style="width:100%; padding:12px; border-radius:60px; border:1px solid var(--border); background:var(--surface); direction:ltr;">
                             <div style="display:flex; gap:10px; flex-wrap:wrap;">
                                 <button class="btn-glow" id="verifyCodeBtn">تأكيد البريد</button>
                                 <button class="btn-glow" id="continueToPaymentBtn" disabled style="opacity:0.65;">الانتقال إلى كاشير</button>
@@ -927,7 +905,7 @@
                     try {
                         await sendVerificationEmail(payload, plan);
                         saveVerificationPayload(payload);
-                        setStatus('تم إرسال كود التحقق إلى بريدك الإلكتروني. صلاحيته 10 دقائق.', false);
+                        setStatus('تم إرسال كود التحقق إلى بريدك الإلكتروني. صلاحيته 10 دقائق. افحص Spam/Junk إذا لم تجده.', false);
                     } catch (error) {
                         setStatus(error.message || 'تعذر إرسال كود التحقق الآن.', true);
                     } finally {
@@ -980,7 +958,6 @@
 
                     continueBtn.disabled = true;
                     continueBtn.textContent = 'جارٍ تجهيز الطلب...';
-
                     try {
                         const identity = { name: payload.name, email: payload.email };
                         const requestId = await createWebsiteCheckoutRequest(plan, identity);
@@ -1035,6 +1012,10 @@
                     e.preventDefault();
                     showComingSoon();
                 });
+            });
+
+            document.querySelectorAll('[data-plan-card="test"]').forEach((card) => {
+                card.style.display = SITE_CONFIG.showTestPlan ? '' : 'none';
             });
 
             initializeIntegrations();
