@@ -30,6 +30,9 @@
             --gradient: linear-gradient(145deg, #0A2C6F, #1F46C7, #4F7CFF);
             --success: #1F8B6C;
             --logo-bg: #ffffff;
+            --input-bg: #ffffff;
+            --input-text: #1a2a3a;
+            --input-border: #e2edf7;
         }
 
         [data-theme="dark"] {
@@ -47,6 +50,9 @@
             --gradient: linear-gradient(135deg, #00E6B3, #2AD4B6);
             --success: #00D8A0;
             --logo-bg: var(--bg);
+            --input-bg: #1e2a3a;
+            --input-text: #f0f6fe;
+            --input-border: #3a4a62;
         }
 
         body {
@@ -145,8 +151,30 @@
         .social-links a:hover { transform: scale(1.2) rotate(3deg); color: var(--primary); }
         .contact-email { direction: ltr; background: var(--surface); padding: 12px; border-radius: 60px; display: inline-block; margin-top: 16px; font-family: monospace; transition: 0.2s; }
         .contact-email:hover { transform: scale(1.02); background: var(--primary); color: white; }
-        input, textarea { transition: all 0.2s; }
-        input:focus, textarea:focus { transform: scale(1.01); border-color: var(--primary); box-shadow: 0 0 0 3px rgba(79,124,255,0.2); outline: none; }
+
+        /* تحسين الحقول في الوضع الداكن */
+        input, textarea, input:focus, textarea:focus {
+            background-color: var(--input-bg);
+            color: var(--input-text);
+            border-color: var(--input-border);
+            transition: all 0.2s;
+        }
+        input::placeholder, textarea::placeholder {
+            color: var(--text-secondary);
+            opacity: 0.7;
+        }
+        .overlay .glass-card input,
+        .overlay .glass-card textarea {
+            background-color: var(--input-bg);
+            color: var(--input-text);
+            border: 1px solid var(--input-border);
+        }
+        .overlay .glass-card input:focus,
+        .overlay .glass-card textarea:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(79,124,255,0.2);
+            outline: none;
+        }
 
         .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin: 40px 0; }
         .pricing-card { background: var(--surface); border-radius: 32px; padding: 32px 24px; text-align: center; transition: all 0.3s; border: 1px solid var(--border); position: relative; overflow: hidden; }
@@ -268,23 +296,23 @@
             <div class="pricing-card" data-aos="zoom-in" data-aos-delay="100">
                 <h3>💪 Core</h3>
                 <p style="font-weight: 600; color: var(--primary); margin-bottom: 5px;">الخطة الأساسية</p>
-                <div class="price">150 جنيه <small>/ شهرياً</small></div>
+                <div class="price">300 جنيه <small>/ شهرياً</small></div>
                 <p>كل الميزات متضمنة. ابدأ رحلتك بدون تردد.</p>
                 <button class="btn-glow subscribe-btn" data-plan="Core">اشترك الآن</button>
             </div>
 
             <div class="pricing-card" data-aos="zoom-in" data-aos-delay="200">
                 <h3>⭐ Pro</h3>
-                <div class="price">400 جنيه <small>/ 3 أشهر</small></div>
-                <div class="save-badge">🔥 وفر 11%</div>
+                <div class="price">750 جنيه <small>/ 3 أشهر</small></div>
+                <div class="save-badge">🔥 وفر 17%</div>
                 <p>كل الميزات. التزام 3 أشهر بسعر مخفض.</p>
                 <button class="btn-glow subscribe-btn" data-plan="Pro">اشترك الآن</button>
             </div>
 
             <div class="pricing-card" data-aos="zoom-in" data-aos-delay="300">
                 <h3>💎 Elate</h3>
-                <div class="price">750 جنيه <small>/ 6 أشهر</small></div>
-                <div class="save-badge">🚀 وفر 17%</div>
+                <div class="price">1200 جنيه <small>/ 6 أشهر</small></div>
+                <div class="save-badge">🚀 وفر 33%</div>
                 <p>كل الميزات. استثمر نصف عام في صحتك.</p>
                 <button class="btn-glow subscribe-btn" data-plan="Elate">اشترك الآن</button>
             </div>
@@ -292,7 +320,7 @@
             <div class="pricing-card" data-aos="zoom-in" data-aos-delay="400" style="border: 2px solid var(--primary);">
                 <h3>🏆 Ultimate</h3>
                 <div class="price">1500 جنيه <small>/ سنة كاملة</small></div>
-                <div class="save-badge">👑 أفضل قيمة! وفر 25%</div>
+                <div class="save-badge">👑 أفضل قيمة! وفر 58%</div>
                 <p>كل الميزات بأقل سعر شهري. عرض للملوك.</p>
                 <button class="btn-glow subscribe-btn" data-plan="Ultimate">اشترك الآن</button>
             </div>
@@ -327,9 +355,9 @@
             <div class="contact-email">admin.BodyFix@gmail.com</div>
             <p style="margin-top: 20px;">أو استخدم النموذج أدناه وسنرد عليك في أقرب وقت.</p>
             <div style="margin-top: 20px; max-width: 400px; margin-left: auto; margin-right: auto;">
-                <input type="text" id="contactName" placeholder="اسمك" style="width:100%; padding:12px; margin:8px 0; border-radius: 60px; border:1px solid var(--border); background: var(--surface);">
-                <input type="email" id="contactEmail" placeholder="بريدك الإلكتروني" style="width:100%; padding:12px; margin:8px 0; border-radius: 60px; border:1px solid var(--border); background: var(--surface);">
-                <textarea rows="3" id="contactMsg" placeholder="رسالتك" style="width:100%; padding:12px; margin:8px 0; border-radius: 24px; border:1px solid var(--border); background: var(--surface);"></textarea>
+                <input type="text" id="contactName" placeholder="اسمك" style="width:100%; padding:12px; margin:8px 0; border-radius: 60px; border:1px solid var(--border); background: var(--input-bg); color: var(--input-text);">
+                <input type="email" id="contactEmail" placeholder="بريدك الإلكتروني" style="width:100%; padding:12px; margin:8px 0; border-radius: 60px; border:1px solid var(--border); background: var(--input-bg); color: var(--input-text);">
+                <textarea rows="3" id="contactMsg" placeholder="رسالتك" style="width:100%; padding:12px; margin:8px 0; border-radius: 24px; border:1px solid var(--border); background: var(--input-bg); color: var(--input-text);"></textarea>
                 <button class="btn-glow" id="sendMsgBtn" style="margin-top: 10px;">إرسال</button>
             </div>
         </div>
@@ -380,9 +408,9 @@
 
             const PLAN_MAP = Object.freeze({
                 Test: { id: 'test', name: 'Test', priceLabel: '10 جنيه / تجربة دفع' },
-                Core: { id: 'core', name: 'Core', priceLabel: '150 جنيه / شهر' },
-                Pro: { id: 'pro', name: 'Pro', priceLabel: '400 جنيه / 3 أشهر' },
-                Elate: { id: 'elite', name: 'Elate', priceLabel: '750 جنيه / 6 أشهر' },
+                Core: { id: 'core', name: 'Core', priceLabel: '300 جنيه / شهر' },
+                Pro: { id: 'pro', name: 'Pro', priceLabel: '750 جنيه / 3 أشهر' },
+                Elate: { id: 'elite', name: 'Elate', priceLabel: '1200 جنيه / 6 أشهر' },
                 Ultimate: { id: 'ultimate', name: 'Ultimate', priceLabel: '1500 جنيه / سنة' },
             });
 
@@ -782,7 +810,7 @@
                             <div>بعد إتمام الدفع انسخ رقم العملية من كاشير وضعه هنا لتسريع المراجعة.</div>
                             <div>ثم ارجع لهذه النافذة واضغط على "لقد أتممت الدفع".</div>
                         </div>
-                        <input id="paymentReferenceInput" type="text" placeholder="رقم العملية / المرجع من كاشير" style="width:100%; padding:12px; border-radius:60px; border:1px solid var(--border); background:var(--surface); direction:ltr; margin-bottom:12px;">
+                        <input id="paymentReferenceInput" type="text" placeholder="رقم العملية / المرجع من كاشير" style="width:100%; padding:12px; border-radius:60px; border:1px solid var(--border); background:var(--input-bg); color:var(--input-text); direction:ltr; margin-bottom:12px;">
                         <div id="paymentReferenceStatus" style="margin-bottom:18px; color:var(--text-secondary); font-size:0.95rem;">
                             اكتب رقم العملية بعد الدفع حتى يصل طلبك للأدمن بشكل أوضح.
                         </div>
@@ -866,12 +894,12 @@
                             <div>بعد الدفع ارجع لنفس النافذة لتأكيد العملية.</div>
                         </div>
                         <div style="display:grid; gap:12px;">
-                            <input id="purchaseNameInput" type="text" value="${String(storedIdentity.name || '').replace(/"/g, '&quot;')}" placeholder="الاسم" style="width:100%; padding:12px; border-radius:60px; border:1px solid var(--border); background:var(--surface);">
-                            <input id="purchaseEmailInput" type="email" value="${String(storedIdentity.email || '').replace(/"/g, '&quot;')}" placeholder="البريد الإلكتروني" style="width:100%; padding:12px; border-radius:60px; border:1px solid var(--border); background:var(--surface); direction:ltr;">
+                            <input id="purchaseNameInput" type="text" value="${String(storedIdentity.name || '').replace(/"/g, '&quot;')}" placeholder="الاسم" style="width:100%; padding:12px; border-radius:60px; border:1px solid var(--border); background:var(--input-bg); color:var(--input-text);">
+                            <input id="purchaseEmailInput" type="email" value="${String(storedIdentity.email || '').replace(/"/g, '&quot;')}" placeholder="البريد الإلكتروني" style="width:100%; padding:12px; border-radius:60px; border:1px solid var(--border); background:var(--input-bg); color:var(--input-text); direction:ltr;">
                             <div style="display:flex; gap:10px; flex-wrap:wrap;">
                                 <button class="btn-glow" id="sendVerificationBtn">إرسال كود التحقق</button>
                             </div>
-                            <input id="verificationCodeInput" type="text" placeholder="أدخل كود التحقق" style="width:100%; padding:12px; border-radius:60px; border:1px solid var(--border); background:var(--surface); direction:ltr;">
+                            <input id="verificationCodeInput" type="text" placeholder="أدخل كود التحقق" style="width:100%; padding:12px; border-radius:60px; border:1px solid var(--border); background:var(--input-bg); color:var(--input-text); direction:ltr;">
                             <div style="display:flex; gap:10px; flex-wrap:wrap;">
                                 <button class="btn-glow" id="verifyCodeBtn">تأكيد البريد</button>
                                 <button class="btn-glow" id="continueToPaymentBtn" disabled style="opacity:0.65;">الانتقال إلى كاشير</button>
@@ -1047,4 +1075,3 @@
     </script>
 </body>
 </html>
-
