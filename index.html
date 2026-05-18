@@ -712,15 +712,23 @@
                 });
             }
 
-            function openKashierLink(planId) {
+            function openKashierLink(planId, existingWindow = null) {
                 const checkoutUrl = SITE_CONFIG.kashierLinks[planId] || '';
                 if (!checkoutUrl) {
                     throw new Error('رابط كاشير غير متوفر لهذه الباقة.');
                 }
+                if (existingWindow && !existingWindow.closed) {
+                    existingWindow.location.href = checkoutUrl;
+                    try {
+                        existingWindow.focus();
+                    } catch (_) {}
+                    return existingWindow;
+                }
                 const popup = window.open(checkoutUrl, '_blank', 'noopener,noreferrer');
                 if (!popup) {
-                    window.location.href = checkoutUrl;
+                    throw new Error('اسمح بفتح نافذة الدفع من المتصفح ثم حاول مرة أخرى.');
                 }
+                return popup;
             }
 
             function closePurchaseOverlay() {
@@ -954,6 +962,7 @@
 
                 continueBtn.addEventListener('click', async () => {
                     const payload = readVerificationPayload();
+                    let checkoutWindow = null;
                     if (!verificationStillValid(payload) || payload.planId !== plan.id) {
                         setStatus('أرسل كود تحقق جديدًا قبل الدفع.', true);
                         continueBtn.disabled = true;
@@ -964,12 +973,20 @@
                     continueBtn.disabled = true;
                     continueBtn.textContent = 'جارٍ تجهيز الطلب...';
                     try {
+                        checkoutWindow = window.open('', '_blank');
+                    } catch (_) {
+                        checkoutWindow = null;
+                    }
+                    try {
                         const identity = { name: payload.name, email: payload.email };
                         const requestId = await createWebsiteCheckoutRequest(plan, identity);
                         clearVerificationPayload();
-                        openKashierLink(plan.id);
+                        openKashierLink(plan.id, checkoutWindow);
                         renderPaymentFollowup(plan, identity, requestId);
                     } catch (error) {
+                        if (checkoutWindow && !checkoutWindow.closed) {
+                            checkoutWindow.close();
+                        }
                         continueBtn.disabled = false;
                         continueBtn.textContent = 'الانتقال إلى كاشير';
                         setStatus(error.message || 'تعذر تجهيز الطلب الآن.', true);
@@ -1030,3 +1047,4 @@
     </script>
 </body>
 </html>
+
