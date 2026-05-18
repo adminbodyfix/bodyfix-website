@@ -560,17 +560,21 @@
 
             function readStoredIdentity() {
                 try {
-                    return JSON.parse(localStorage.getItem(STORAGE_KEYS.customerIdentity) || '{}');
+                    return JSON.parse(sessionStorage.getItem(STORAGE_KEYS.customerIdentity) || '{}');
                 } catch (_) {
                     return {};
                 }
             }
 
             function storeIdentity(name, email) {
-                localStorage.setItem(STORAGE_KEYS.customerIdentity, JSON.stringify({
+                sessionStorage.setItem(STORAGE_KEYS.customerIdentity, JSON.stringify({
                     name: String(name || '').trim(),
                     email: String(email || '').trim(),
                 }));
+            }
+
+            function clearStoredIdentity() {
+                sessionStorage.removeItem(STORAGE_KEYS.customerIdentity);
             }
 
             function generateVerificationCode() {
@@ -816,6 +820,7 @@
                     try {
                         await markPaymentSubmitted(requestId, paymentReference);
                         clearPendingOrder();
+                        clearStoredIdentity();
                         closePurchaseOverlay();
                         showPage('pricing');
                         showManualSuccessMessage(identity.email);
