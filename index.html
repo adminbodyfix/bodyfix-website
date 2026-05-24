@@ -725,6 +725,9 @@
         <a href="#" data-page="howitworks"><i class="fas fa-cogs"></i> كيف يعمل التطبيق؟</a>
         <a href="#" data-page="faq"><i class="fas fa-question-circle"></i> الأسئلة الشائعة</a>
         <a href="#" data-page="contact"><i class="fas fa-envelope"></i> تواصل معنا</a>
+        <a href="#" data-page="privacy"><i class="fas fa-shield-alt"></i> الخصوصية</a>
+        <a href="#" data-page="terms"><i class="fas fa-file-contract"></i> الشروط</a>
+        <a href="#" data-page="refund"><i class="fas fa-rotate-left"></i> الاسترداد</a>
     </div>
     <div class="overlay" id="overlay"></div>
     <div id="toastMsg" class="toast"></div>
@@ -945,6 +948,10 @@
             <h3>هل يمكنني تغيير هدفي؟</h3>
             <p>نعم، في أي وقت من الإعدادات، وسيعيد التطبيق حساب خطتك.</p>
         </div>
+        <div class="glass-card" data-aos="fade-right" data-aos-delay="200">
+            <h3>كيف يصلني كود التفعيل بعد الدفع؟</h3>
+            <p>بعد تأكيد الدفع، نقوم بتوليد كود التفعيل تلقائيًا وإرساله إلى نفس البريد المستخدم وقت الشراء. كما نوفر زرًا لاسترجاع الكود إذا أغلقت الصفحة أو لم تجد الرسالة.</p>
+        </div>
     </div>
 
     <div id="page-contact" class="page">
@@ -953,7 +960,9 @@
             <i class="fas fa-envelope" style="font-size: 2.5rem; color: var(--primary);"></i>
             <p style="margin-top: 14px;">يمكنك مراسلتنا على البريد الإلكتروني:</p>
             <div class="contact-email">admin.BodyFix@gmail.com</div>
-            <p style="margin-top: 18px;">أو استخدم النموذج أدناه وسنرد عليك في أقرب وقت.</p>
+            <button class="btn-glow" id="recoverActivationCodeBtn" style="margin-top: 14px;">استرجاع كود التفعيل</button>
+            <p style="margin-top: 18px;">لو دفعت ولم يصلك الكود، استخدم زر الاسترجاع أولًا. وإذا استمرت المشكلة، اكتب لنا من نفس بريد الشراء وسنراجع العملية بسرعة.</p>
+            <p style="margin-top: 10px; color: var(--text-secondary);">أو استخدم النموذج أدناه وسنرد عليك في أقرب وقت.</p>
             <div style="margin-top: 18px; max-width: 400px; margin-left: auto; margin-right: auto;">
                 <input type="text" id="contactName" placeholder="اسمك"
                     style="width:100%; padding:12px; margin:8px 0; border-radius: 50px; border:1px solid var(--border); background: var(--input-bg); color: var(--input-text);">
@@ -966,6 +975,33 @@
         </div>
     </div>
 
+    <div id="page-privacy" class="page">
+        <h2 style="font-size: 2.2rem;" data-aos="fade-right">🛡️ سياسة الخصوصية</h2>
+        <div class="glass-card" data-aos="fade-up">
+            <p>نستخدم بياناتك فقط لتقديم خطتك، تفعيل اشتراكك، إرسال كود التفعيل، وتحسين تجربة استخدام BodyFix.</p>
+            <p>لا نبيع بياناتك لأي طرف خارجي. قد نستخدم مزودي خدمات مثل Firebase وKashier لتشغيل الدفع، التخزين، والإشعارات، بما يلزم فقط لإتمام الخدمة.</p>
+            <p>يمكنك التواصل معنا عبر <span class="contact-email">admin.BodyFix@gmail.com</span> إذا احتجت مراجعة بياناتك أو طلب مساعدة مرتبطة بحسابك.</p>
+        </div>
+    </div>
+
+    <div id="page-terms" class="page">
+        <h2 style="font-size: 2.2rem;" data-aos="fade-right">📄 الشروط والأحكام</h2>
+        <div class="glass-card" data-aos="fade-up">
+            <p>باستخدامك BodyFix، أنت توافق على أن التوصيات المقدمة هدفها الدعم والتنظيم وليست بديلاً عن الاستشارة الطبية المتخصصة عند الحاجة.</p>
+            <p>صلاحية كل كود تفعيل تخضع للباقة التي تم شراؤها. يُستخدم الكود مرة واحدة، ويرتبط بمدة الاشتراك الموضحة وقت الشراء.</p>
+            <p>في حال وجود مشكلة في الدفع أو وصول الكود، نوفر استرجاعًا تلقائيًا للكود عبر البريد، كما يمكنك التواصل معنا من نفس بريد الشراء للمراجعة.</p>
+        </div>
+    </div>
+
+    <div id="page-refund" class="page">
+        <h2 style="font-size: 2.2rem;" data-aos="fade-right">💸 سياسة الاسترداد</h2>
+        <div class="glass-card" data-aos="fade-up">
+            <p>إذا تم خصم المبلغ ولم يصلك كود التفعيل أو لم يتم تفعيل اشتراكك بشكل صحيح، راسلنا فورًا من نفس بريد الشراء وسنراجع العملية بأولوية.</p>
+            <p>العمليات التي تم فيها توليد كود تفعيل صالح وتسليم الخدمة تعتبر مكتملة عادةً، لكننا نراجع أي حالة استثنائية بشكل منصف.</p>
+            <p>للاستفسار عن أي عملية دفع، استخدم البريد <span class="contact-email">admin.BodyFix@gmail.com</span> مع إرفاق بريد الشراء وأي رقم طلب متوفر.</p>
+        </div>
+    </div>
+
     <footer>
         <div class="social-links">
             <a href="https://www.facebook.com/share/18cXkp7RRs/" class="social-link" target="_blank"
@@ -974,13 +1010,18 @@
                     class="fab fa-instagram fa-lg"></i></a>
             <a href="#" class="social-link disabled-social" data-social="tiktok"><i class="fab fa-tiktok fa-lg"></i></a>
         </div>
+        <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin:14px 0 8px;">
+            <a href="#" data-page="privacy" style="color:var(--text-secondary);text-decoration:none;">الخصوصية</a>
+            <a href="#" data-page="terms" style="color:var(--text-secondary);text-decoration:none;">الشروط</a>
+            <a href="#" data-page="refund" style="color:var(--text-secondary);text-decoration:none;">الاسترداد</a>
+            <a href="#" data-page="contact" style="color:var(--text-secondary);text-decoration:none;">الدعم</a>
+        </div>
         <p>© 2026 BodyFix – جميع الحقوق محفوظة</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script>
         (function () {
             // تهيئة AOS مع إعدادات مناسبة للموبايل
@@ -1000,11 +1041,6 @@
                     messagingSenderId: '72326727897',
                     appId: '1:72326727897:web:a1ef7105dda5aa2d6296c8',
                     measurementId: 'G-1NF851K8RP',
-                },
-                emailjs: {
-                    publicKey: '1Zy46on-UFintuwHu',
-                    serviceId: 'admin.BodyFix@gmail.com',
-                    templateId: 'template_yvwtl3f',
                 },
             });
 
@@ -1048,17 +1084,6 @@
                 } catch (error) {
                     console.error('Firebase init error', error);
                 }
-                try {
-                    if (window.emailjs && SITE_CONFIG.emailjs.publicKey.trim()) {
-                        window.emailjs.init({ publicKey: SITE_CONFIG.emailjs.publicKey.trim() });
-                    }
-                } catch (error) {
-                    console.error('EmailJS init error', error);
-                }
-            }
-
-            function isEmailJsConfigured() {
-                return Boolean(window.emailjs && SITE_CONFIG.emailjs.publicKey.trim() && SITE_CONFIG.emailjs.templateId.trim());
             }
 
             let dark = localStorage.getItem(STORAGE_KEYS.theme) === 'dark';
@@ -1087,8 +1112,9 @@
             closeDrawerBtn.addEventListener('click', closeDrawerFunc);
             overlay.addEventListener('click', closeDrawerFunc);
 
-            const pages = ['home', 'features', 'pricing', 'howitworks', 'faq', 'contact'];
+            const pages = ['home', 'features', 'pricing', 'howitworks', 'faq', 'contact', 'privacy', 'terms', 'refund'];
             function showPage(pageId) {
+                if (!pages.includes(pageId)) return;
                 pages.forEach(p => document.getElementById(`page-${p}`).classList.remove('active-page'));
                 document.getElementById(`page-${pageId}`).classList.add('active-page');
                 closeDrawerFunc();
@@ -1096,7 +1122,7 @@
                 if (pageId === 'home') startCounters();
                 setTimeout(() => AOS.refresh(), 100);
             }
-            document.querySelectorAll('.drawer a').forEach(link => {
+            document.querySelectorAll('[data-page]').forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
                     const page = link.getAttribute('data-page');
@@ -1126,6 +1152,22 @@
                 toast.textContent = msg;
                 toast.style.opacity = '1';
                 setTimeout(() => { toast.style.opacity = '0'; }, 2500);
+            }
+
+            async function copyPlainText(text, successMessage = 'تم النسخ.') {
+                const value = String(text || '').trim();
+                if (!value) return;
+                if (navigator.clipboard?.writeText) {
+                    await navigator.clipboard.writeText(value);
+                } else {
+                    const area = document.createElement('textarea');
+                    area.value = value;
+                    document.body.appendChild(area);
+                    area.select();
+                    document.execCommand('copy');
+                    area.remove();
+                }
+                showComingSoon(successMessage);
             }
 
             function removeOverlayCard(id) { const existing = document.getElementById(id); if (existing) existing.remove(); }
@@ -1173,18 +1215,25 @@
             function readVerificationPayload() { try { return JSON.parse(sessionStorage.getItem(STORAGE_KEYS.verificationPayload) || '{}'); } catch (_) { return {}; } }
             function clearVerificationPayload() { sessionStorage.removeItem(STORAGE_KEYS.verificationPayload); }
             function verificationStillValid(payload) { return Boolean(payload && payload.code && payload.email && payload.sentAt && (Date.now() - Number(payload.sentAt)) <= 10 * 60 * 1000); }
-            function readEmailJsError(error) { if (!error) return 'تعذر إرسال كود التحقق الآن.'; if (typeof error === 'string' && error.trim()) return error.trim(); if (typeof error.text === 'string' && error.text.trim()) return error.text.trim(); if (typeof error.message === 'string' && error.message.trim()) return error.message.trim(); return 'تعذر إرسال كود التحقق الآن.'; }
             function cloudFunctionUrl(name) { return `${SITE_CONFIG.functionsBaseUrl.replace(/\/+$/, '')}/${name}`; }
 
             async function sendVerificationEmail(payload, plan) {
-                if (!isEmailJsConfigured()) throw new Error('فعّل بيانات EmailJS داخل إعدادات الموقع.');
-                const templateParams = { to_name: payload.name, to_email: payload.email, verification_code: payload.code, plan_name: plan.name, support_email: SITE_CONFIG.adminEmail, from_name: 'BodyFix' };
-                const candidateServiceIds = [SITE_CONFIG.emailjs.serviceId.trim(), 'default_service'].filter((v, i, a) => v && a.indexOf(v) === i);
-                let lastError = null;
-                for (const serviceId of candidateServiceIds) {
-                    try { return await window.emailjs.send(serviceId, SITE_CONFIG.emailjs.templateId.trim(), templateParams); } catch (error) { lastError = error; }
+                const response = await fetch(cloudFunctionUrl('sendWebsiteVerificationEmail'), {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        name: payload.name,
+                        email: payload.email,
+                        code: payload.code,
+                        planId: plan.id,
+                        planName: plan.name,
+                    }),
+                });
+                const json = await response.json().catch(() => ({}));
+                if (!response.ok || json.ok !== true) {
+                    throw new Error(json.error || 'تعذر إرسال كود التحقق الآن.');
                 }
-                throw new Error(readEmailJsError(lastError));
+                return json;
             }
 
             async function createWebsiteManualPaymentSession(plan, identity, requestId) {
@@ -1216,6 +1265,22 @@
                 const json = await response.json().catch(() => ({}));
                 if (!response.ok || json.ok !== true) {
                     throw new Error(json.error || 'تعذر التحقق من حالة الدفع الآن.');
+                }
+                return json;
+            }
+
+            async function requestWebsiteActivationRecovery(email, requestId = '') {
+                const response = await fetch(cloudFunctionUrl('requestWebsiteActivationRecovery'), {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email: normalizeEmail(email),
+                        requestId: String(requestId || '').trim(),
+                    }),
+                });
+                const json = await response.json().catch(() => ({}));
+                if (!response.ok || json.ok !== true) {
+                    throw new Error(json.error || 'تعذر إرسال طلب الاسترجاع الآن.');
                 }
                 return json;
             }
@@ -1282,14 +1347,57 @@
                 const activationCode = String((paymentStatus && paymentStatus.activationCode) || '').trim();
                 const planName = String((paymentStatus && paymentStatus.planName) || '').trim();
                 const durationDays = Number((paymentStatus && paymentStatus.durationDays) || 0);
+                const paymentConfirmedVia = String((paymentStatus && paymentStatus.paymentConfirmedVia) || '').trim();
                 const codeSection = activationCode
                     ? `<div style="background:var(--surface);border-radius:24px;padding:16px;margin:16px 0;">
                             <div style="font-weight:800;margin-bottom:8px;">كود التفعيل الخاص بك</div>
                             <div style="direction:ltr;font-family:monospace;font-size:1.2rem;word-break:break-word;">${activationCode}</div>
                             <div style="margin-top:10px;color:var(--text-secondary);">استخدمه داخل التطبيق لتفعيل ${planName || 'اشتراكك'}${durationDays > 0 ? ` لمدة ${durationDays} يوم` : ''}.</div>
+                            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px;">
+                                <button class="btn-glow" id="copyActivationCodeBtn">نسخ الكود</button>
+                                <button class="btn-glow" id="openRecoveryFromSuccessBtn">استرجاع عبر الإيميل</button>
+                            </div>
                         </div>`
-                    : `<div style="background:var(--surface);border-radius:24px;padding:16px;margin:16px 0;"><div>سيتم إرسال الكود خلال ساعة.</div><div>إذا لم يصلك، افحص Spam أو تواصل معنا: ${SITE_CONFIG.adminEmail}</div></div>`;
-                const { card } = createOverlayCard('bodyfix-success-overlay', `<div style="text-align:center;"><h2 style="font-size:1.8rem;">تم استلام الدفع بنجاح</h2><p>${activationCode ? 'تم تجهيز كود التفعيل الخاص بك.' : `سيتم إرسال كود التفعيل على البريد: <span style="direction:ltr;">${email}</span>`}</p>${codeSection}<button class="btn-glow" id="successCloseBtn">حسنًا</button></div>`);
+                    : `<div style="background:var(--surface);border-radius:24px;padding:16px;margin:16px 0;">
+                            <div>تم إرسال كود التفعيل تلقائيًا إلى بريدك.</div>
+                            <div style="margin-top:8px;">إذا لم يصلك خلال دقائق، افحص Spam أو استخدم استرجاع الكود من نفس الموقع.</div>
+                            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px;">
+                                <button class="btn-glow" id="openRecoveryFromSuccessBtn">استرجاع كود التفعيل</button>
+                            </div>
+                        </div>`;
+                const confirmationLine = paymentConfirmedVia === 'webhook'
+                    ? 'تم تأكيد العملية آليًا من بوابة الدفع.'
+                    : 'تم تأكيد العملية وتجهيز اشتراكك.';
+                const appButton = SITE_CONFIG.googlePlayUrl
+                    ? `<button class="btn-glow" id="openAppStoreFromSuccessBtn">فتح صفحة التطبيق</button>`
+                    : '';
+                const { card } = createOverlayCard('bodyfix-success-overlay', `<div style="text-align:center;">
+                    <h2 style="font-size:1.8rem;">تم استلام الدفع بنجاح</h2>
+                    <p>${activationCode ? 'تم تجهيز كود التفعيل الخاص بك.' : `تم إرسال كود التفعيل على البريد: <span style="direction:ltr;">${email}</span>`}</p>
+                    <div style="background:var(--surface);border-radius:20px;padding:14px;margin:14px 0;text-align:start;">
+                        <div style="font-weight:800;margin-bottom:8px;">ماذا تفعل الآن؟</div>
+                        <ol style="margin:0;padding-inline-start:18px;line-height:1.8;">
+                            <li>افتح تطبيق BodyFix وسجّل الدخول بحسابك.</li>
+                            <li>ادخل إلى شاشة التفعيل أو الاشتراك.</li>
+                            <li>أدخل كود التفعيل كما هو تمامًا.</li>
+                        </ol>
+                        <div style="margin-top:10px;color:var(--text-secondary);">${confirmationLine}</div>
+                    </div>
+                    ${codeSection}
+                    <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+                        ${appButton}
+                        <button class="btn-glow" id="openSupportPageBtn">الدعم والمساعدة</button>
+                        <button class="btn-glow" id="successCloseBtn">حسنًا</button>
+                    </div>
+                </div>`);
+                const copyCodeBtn = card.querySelector('#copyActivationCodeBtn');
+                if (copyCodeBtn) copyCodeBtn.addEventListener('click', () => copyPlainText(activationCode, 'تم نسخ كود التفعيل.'));
+                const recoveryBtn = card.querySelector('#openRecoveryFromSuccessBtn');
+                if (recoveryBtn) recoveryBtn.addEventListener('click', () => openActivationRecoveryFlow());
+                const openAppStoreBtn = card.querySelector('#openAppStoreFromSuccessBtn');
+                if (openAppStoreBtn) openAppStoreBtn.addEventListener('click', () => { window.location.href = SITE_CONFIG.googlePlayUrl; });
+                const supportBtn = card.querySelector('#openSupportPageBtn');
+                if (supportBtn) supportBtn.addEventListener('click', () => { removeOverlayCard('bodyfix-success-overlay'); showPage('contact'); });
                 card.querySelector('#successCloseBtn').addEventListener('click', () => removeOverlayCard('bodyfix-success-overlay'));
             }
 
@@ -1308,7 +1416,7 @@
                         <div style="background:var(--surface);border-radius:24px;padding:14px;display:grid;gap:6px;">
                             <div style="font-weight:800;">${identity.name}</div>
                             <div style="direction:ltr;">${identity.email}</div>
-                            <div style="color:var(--text-secondary);font-size:0.95rem;">أكمل الدفع داخل الإطار بالأسفل. سنحاول التقاط النتيجة تلقائيًا وإظهار كود التفعيل فور نجاح العملية.</div>
+                            <div style="color:var(--text-secondary);font-size:0.95rem;">أكمل الدفع داخل الإطار بالأسفل. التأكيد النهائي يتم تلقائيًا من بوابة الدفع، ثم نجهز كود التفعيل ونرسله إلى بريدك.</div>
                         </div>
                         <div style="background:#fff;border:1px solid var(--border);border-radius:24px;overflow:hidden;">
                             <iframe id="kashierCheckoutFrame" src="${checkoutUrl}" title="Kashier Checkout" loading="eager" referrerpolicy="strict-origin-when-cross-origin" allow="payment *" sandbox="allow-forms allow-scripts allow-same-origin allow-popups allow-top-navigation-by-user-activation" style="display:block;width:100%;height:min(62vh,720px);min-height:360px;border:0;background:#fff;"></iframe>
@@ -1317,6 +1425,7 @@
                         <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">
                             <button class="btn-glow" id="refreshPaymentStatusBtn">تحقق من حالة الدفع الآن</button>
                             <button class="btn-glow" id="openCheckoutExternallyBtn">فتح كاشير في نافذة مستقلة</button>
+                            <button class="btn-glow" id="openRecoveryHelpBtn">استرجاع الكود لاحقًا</button>
                         </div>
                     </div>`,
                     { width: 'min(96vw, 1080px)', maxHeight: '92vh', padding: '18px', borderRadius: '32px' }
@@ -1325,6 +1434,7 @@
                 const statusBox = card.querySelector('#checkoutStatusBox');
                 const refreshBtn = card.querySelector('#refreshPaymentStatusBtn');
                 const externalBtn = card.querySelector('#openCheckoutExternallyBtn');
+                const recoveryHelpBtn = card.querySelector('#openRecoveryHelpBtn');
                 const closeBtn = card.querySelector('#cancelPurchaseFlowBtn');
 
                 function setCheckoutStatus(message, isError = false) {
@@ -1355,11 +1465,15 @@
                             setCheckoutStatus(paymentStatus.failureReason || 'عملية الدفع لم تكتمل. يمكنك المحاولة مرة أخرى أو فتح كاشير خارج الصفحة.', true);
                             return;
                         }
+                        if (String(paymentStatus.activationEmailStatus || '').trim().toLowerCase() === 'failed') {
+                            setCheckoutStatus('تم الدفع لكن إرسال الإيميل يحتاج إعادة محاولة. يمكنك استخدام استرجاع الكود أو التواصل معنا إذا لزم الأمر.', true);
+                            return;
+                        }
                         const rawStatus = String(paymentStatus.rawStatus || '').trim().toUpperCase();
                         if (rawStatus === 'OPENED') {
                             setCheckoutStatus('تم فتح جلسة الدفع. أكمل العملية داخل الإطار، وسنلتقط النتيجة تلقائيًا.');
                         } else {
-                            setCheckoutStatus('ننتظر تأكيد العملية من Kashier. يمكنك الاستمرار داخل الإطار أو الضغط على "تحقق من حالة الدفع الآن".');
+                            setCheckoutStatus('ننتظر تأكيدًا آمنًا من بوابة الدفع. يمكنك الاستمرار داخل الإطار أو الضغط على "تحقق من حالة الدفع الآن".');
                         }
                     } catch (error) {
                         setCheckoutStatus(error.message || 'تعذر قراءة حالة الدفع الآن.', true);
@@ -1380,6 +1494,9 @@
                         setCheckoutStatus(error.message, true);
                     }
                 });
+                if (recoveryHelpBtn) {
+                    recoveryHelpBtn.addEventListener('click', () => openActivationRecoveryFlow());
+                }
                 refreshBtn.addEventListener('click', () => { pollCheckoutStatus(true); });
                 checkoutStatusPollTimer = window.setInterval(() => { pollCheckoutStatus(false); }, 5000);
                 pollCheckoutStatus(false);
@@ -1389,7 +1506,7 @@
                 const plan = PLAN_MAP[planName];
                 if (!plan) { showComingSoon('تعذر تحديد الباقة.'); return; }
                 const storedIdentity = readStoredIdentity();
-                const { card } = createOverlayCard(purchaseOverlayId, `<div><div style="display:flex;justify-content:space-between;"><h2>${plan.name}</h2><button id="closePurchaseFlowBtn" style="background:transparent;border:none;font-size:1.6rem;cursor:pointer;">×</button></div><p>أدخل اسمك وبريدك لإرسال كود التحقق</p><div style="background:var(--surface);border-radius:24px;padding:12px;margin:12px 0;"><div style="font-weight:800;">ملاحظات</div><div>استخدم نفس الإيميل الذي تريد استلام الكود عليه.</div><div>بعد الدفع سنعرض نتيجة العملية وكود التفعيل هنا تلقائيًا قدر الإمكان.</div></div><input id="purchaseNameInput" type="text" value="${storedIdentity.name || ''}" placeholder="الاسم" style="width:100%;padding:12px;margin:8px 0;border-radius:50px;background:var(--input-bg);color:var(--input-text);"><input id="purchaseEmailInput" type="email" value="${storedIdentity.email || ''}" placeholder="البريد الإلكتروني" style="width:100%;padding:12px;margin:8px 0;border-radius:50px;background:var(--input-bg);color:var(--input-text);direction:ltr;"><button class="btn-glow" id="sendVerificationBtn">إرسال كود التحقق</button><input id="verificationCodeInput" type="text" placeholder="أدخل كود التحقق" style="width:100%;padding:12px;margin:8px 0;border-radius:50px;"><div style="display:flex;gap:10px;"><button class="btn-glow" id="verifyCodeBtn">تأكيد البريد</button><button class="btn-glow" id="continueToPaymentBtn" disabled style="opacity:0.65;">فتح شاشة الدفع</button></div><div id="purchaseFlowStatus" style="margin-top:8px;"></div></div>`);
+                const { card } = createOverlayCard(purchaseOverlayId, `<div><div style="display:flex;justify-content:space-between;"><h2>${plan.name}</h2><button id="closePurchaseFlowBtn" style="background:transparent;border:none;font-size:1.6rem;cursor:pointer;">×</button></div><p>أدخل اسمك وبريدك لإرسال كود التحقق</p><div style="background:var(--surface);border-radius:24px;padding:12px;margin:12px 0;"><div style="font-weight:800;">ملاحظات</div><div>استخدم نفس الإيميل الذي تريد استلام الكود عليه.</div><div>بعد الدفع سنعرض نتيجة العملية وكود التفعيل هنا تلقائيًا قدر الإمكان.</div><div>إذا أغلقت الصفحة، ستظل قادرًا على استرجاع كود التفعيل من نفس الموقع أو من بريدك.</div></div><input id="purchaseNameInput" type="text" value="${storedIdentity.name || ''}" placeholder="الاسم" style="width:100%;padding:12px;margin:8px 0;border-radius:50px;background:var(--input-bg);color:var(--input-text);"><input id="purchaseEmailInput" type="email" value="${storedIdentity.email || ''}" placeholder="البريد الإلكتروني" style="width:100%;padding:12px;margin:8px 0;border-radius:50px;background:var(--input-bg);color:var(--input-text);direction:ltr;"><button class="btn-glow" id="sendVerificationBtn">إرسال كود التحقق</button><input id="verificationCodeInput" type="text" placeholder="أدخل كود التحقق" style="width:100%;padding:12px;margin:8px 0;border-radius:50px;"><div style="display:flex;gap:10px;"><button class="btn-glow" id="verifyCodeBtn">تأكيد البريد</button><button class="btn-glow" id="continueToPaymentBtn" disabled style="opacity:0.65;">فتح شاشة الدفع</button></div><div id="purchaseFlowStatus" style="margin-top:8px;"></div></div>`);
                 const nameInput = card.querySelector('#purchaseNameInput'), emailInput = card.querySelector('#purchaseEmailInput'), codeInput = card.querySelector('#verificationCodeInput');
                 const sendBtn = card.querySelector('#sendVerificationBtn'), verifyBtn = card.querySelector('#verifyCodeBtn'), continueBtn = card.querySelector('#continueToPaymentBtn'), statusEl = card.querySelector('#purchaseFlowStatus');
                 function setStatus(msg, isErr) { statusEl.textContent = msg; statusEl.style.color = isErr ? '#ffb4b4' : 'var(--text-secondary)'; }
@@ -1400,7 +1517,7 @@
                     if (!isValidEmail(email)) { setStatus('بريد إلكتروني غير صحيح.', true); return; }
                     const payload = buildVerificationPayload(name, email, plan.id, generateVerificationCode());
                     sendBtn.disabled = true; sendBtn.textContent = 'جارٍ الإرسال...';
-                    try { await sendVerificationEmail(payload, plan); saveVerificationPayload(payload); setStatus('تم إرسال الكود. تحقق من بريدك (وربما Spam).', false); }
+                    try { await sendVerificationEmail(payload, plan); saveVerificationPayload(payload); setStatus('تم إرسال الكود. تحقق من بريدك الآن.', false); }
                     catch (err) { setStatus(err.message, true); } finally { sendBtn.disabled = false; sendBtn.textContent = 'إرسال كود التحقق'; }
                 });
                 verifyBtn.addEventListener('click', () => {
@@ -1427,10 +1544,59 @@
                 });
             }
 
+            function openActivationRecoveryFlow() {
+                const storedIdentity = readStoredIdentity();
+                const pendingRequestId = sessionStorage.getItem(STORAGE_KEYS.pendingOrderId) || '';
+                const { card } = createOverlayCard(
+                    'activation-recovery-overlay',
+                    `<div>
+                        <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;">
+                            <h2 style="margin:0;">استرجاع كود التفعيل</h2>
+                            <button id="closeRecoveryFlowBtn" style="background:transparent;border:none;font-size:1.6rem;cursor:pointer;">×</button>
+                        </div>
+                        <p style="color:var(--text-secondary);margin-top:10px;">اكتب نفس البريد المستخدم وقت الشراء. يمكنك ترك رقم الطلب فارغًا إذا لم يكن متوفرًا.</p>
+                        <input id="recoveryEmailInput" type="email" value="${storedIdentity.email || ''}" placeholder="البريد الإلكتروني" style="width:100%;padding:12px;margin:8px 0;border-radius:50px;background:var(--input-bg);color:var(--input-text);direction:ltr;">
+                        <input id="recoveryRequestIdInput" type="text" value="${pendingRequestId}" placeholder="رقم الطلب - اختياري" style="width:100%;padding:12px;margin:8px 0;border-radius:50px;background:var(--input-bg);color:var(--input-text);direction:ltr;">
+                        <button class="btn-glow" id="submitRecoveryBtn">إرسال الكود على الإيميل</button>
+                        <div id="recoveryFlowStatus" style="margin-top:10px;color:var(--text-secondary);"></div>
+                    </div>`
+                );
+                const emailInput = card.querySelector('#recoveryEmailInput');
+                const requestIdInput = card.querySelector('#recoveryRequestIdInput');
+                const submitBtn = card.querySelector('#submitRecoveryBtn');
+                const statusEl = card.querySelector('#recoveryFlowStatus');
+                function setStatus(message, isError = false) {
+                    statusEl.textContent = message;
+                    statusEl.style.color = isError ? '#ffb4b4' : 'var(--text-secondary)';
+                }
+                card.querySelector('#closeRecoveryFlowBtn').addEventListener('click', () => removeOverlayCard('activation-recovery-overlay'));
+                submitBtn.addEventListener('click', async () => {
+                    const email = normalizeEmail(emailInput.value);
+                    const requestId = String(requestIdInput.value || '').trim();
+                    if (!isValidEmail(email)) {
+                        setStatus('اكتب بريدًا إلكترونيًا صحيحًا.', true);
+                        return;
+                    }
+                    submitBtn.disabled = true;
+                    submitBtn.textContent = 'جارٍ الإرسال...';
+                    try {
+                        await requestWebsiteActivationRecovery(email, requestId);
+                        setStatus('إذا كانت البيانات صحيحة، سيتم إرسال كود التفعيل إلى بريدك خلال دقائق.');
+                    } catch (error) {
+                        setStatus(error.message || 'تعذر تنفيذ طلب الاسترجاع الآن.', true);
+                    } finally {
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'إرسال الكود على الإيميل';
+                    }
+                });
+            }
+
             document.querySelectorAll('.subscribe-btn').forEach(btn => btn.addEventListener('click', () => openPurchaseFlow(btn.getAttribute('data-plan') || '')));
             document.querySelectorAll('.store-btn').forEach(el => el.addEventListener('click', (e) => { e.preventDefault(); const store = el.getAttribute('data-store'); if (store === 'google' && SITE_CONFIG.googlePlayUrl) window.location.href = SITE_CONFIG.googlePlayUrl; else if (store === 'apple' && SITE_CONFIG.appleStoreUrl) window.location.href = SITE_CONFIG.appleStoreUrl; else showComingSoon(); }));
             document.querySelectorAll('.disabled-social').forEach(el => el.addEventListener('click', (e) => { e.preventDefault(); showComingSoon(); }));
             document.querySelectorAll('[data-plan-card="test"]').forEach(card => { card.style.display = SITE_CONFIG.showTestPlan ? '' : 'none'; });
+            const recoverActivationCodeBtn = document.getElementById('recoverActivationCodeBtn');
+            if (recoverActivationCodeBtn) recoverActivationCodeBtn.addEventListener('click', () => openActivationRecoveryFlow());
             const sendMsgBtn = document.getElementById('sendMsgBtn');
             if (sendMsgBtn) sendMsgBtn.addEventListener('click', (e) => { e.preventDefault(); const name = document.getElementById('contactName')?.value || '', email = document.getElementById('contactEmail')?.value || '', msg = document.getElementById('contactMsg')?.value || ''; window.location.href = `mailto:${SITE_CONFIG.adminEmail}?subject=${encodeURIComponent(`رسالة من ${name}`)}&body=${encodeURIComponent(`الاسم: ${name}\nالبريد: ${email}\n\n${msg}`)}`; });
             initializeIntegrations();
