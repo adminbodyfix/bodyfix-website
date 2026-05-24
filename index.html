@@ -1552,7 +1552,7 @@
                             <h2 style="margin:0;">استرجاع كود التفعيل</h2>
                             <button id="closeRecoveryFlowBtn" style="background:transparent;border:none;font-size:1.6rem;cursor:pointer;">×</button>
                         </div>
-                        <p style="color:var(--text-secondary);margin-top:10px;">اكتب نفس البريد المستخدم وقت الشراء. يمكنك ترك رقم الطلب فارغًا إذا لم يكن متوفرًا.</p>
+                        <p style="color:var(--text-secondary);margin-top:10px;">اكتب نفس البريد المستخدم وقت الشراء. إذا تركت رقم الطلب فارغًا، سنرسل كل الأكواد المدفوعة المرتبطة بهذا البريد مع اسم كل باقة.</p>
                         <input id="recoveryEmailInput" type="email" value="${storedIdentity.email || ''}" placeholder="البريد الإلكتروني" style="width:100%;padding:12px;margin:8px 0;border-radius:50px;background:var(--input-bg);color:var(--input-text);direction:ltr;">
                         <input id="recoveryRequestIdInput" type="text" value="${pendingRequestId}" placeholder="رقم الطلب - اختياري" style="width:100%;padding:12px;margin:8px 0;border-radius:50px;background:var(--input-bg);color:var(--input-text);direction:ltr;">
                         <button class="btn-glow" id="submitRecoveryBtn">إرسال الكود على الإيميل</button>
@@ -1579,7 +1579,7 @@
                     submitBtn.textContent = 'جارٍ الإرسال...';
                     try {
                         await requestWebsiteActivationRecovery(email, requestId);
-                        setStatus('إذا كانت البيانات صحيحة، سيتم إرسال كود التفعيل إلى بريدك خلال دقائق.');
+                        setStatus('إذا كانت البيانات صحيحة، سنرسل إلى بريدك الكود المناسب أو كل الأكواد المدفوعة المرتبطة بهذا البريد خلال دقائق.');
                     } catch (error) {
                         setStatus(error.message || 'تعذر تنفيذ طلب الاسترجاع الآن.', true);
                     } finally {
