@@ -1530,12 +1530,14 @@
                     if (!verificationStillValid(payload) || payload.planId !== plan.id) { setStatus('أرسل كود جديد قبل الدفع.', true); continueBtn.disabled = true; continueBtn.style.opacity = '0.65'; return; }
                     continueBtn.disabled = true; continueBtn.textContent = 'جارٍ التجهيز...';
                     try {
-                        if (!db) throw new Error('تعذر تهيئة Firestore على الموقع.');
                         const identity = { name: payload.name, email: payload.email };
-                        const requestRef = db.collection('website_checkout_requests').doc();
-                        const requestId = requestRef.id;
+                        const requestId = (db && db.collection)
+                            ? db.collection('website_checkout_requests').doc().id
+                            : `web_${Date.now()}_${Math.random().toString(36).slice(2, 10)}`;
                         const session = await createWebsiteManualPaymentSession(plan, identity, requestId);
-                        await createWebsiteCheckoutRequest(plan, identity, session.checkoutUrl, requestId);
+                        sessionStorage.setItem(STORAGE_KEYS.pendingOrderId, requestId);
+                        sessionStorage.setItem(STORAGE_KEYS.pendingPlanId, plan.id);
+                        storeIdentity(identity.name, identity.email);
                         clearVerificationPayload();
                         renderEmbeddedCheckout(plan, identity, requestId, session.sessionId, session.checkoutUrl);
                     } catch (error) { continueBtn.disabled = false; continueBtn.textContent = 'فتح شاشة الدفع'; setStatus(error.message, true); }
